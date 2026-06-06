@@ -23,7 +23,7 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.1 });
-document.querySelectorAll('.servicio-card, .proyecto-detalle, .ci-item, .red-card').forEach(el => {
+document.querySelectorAll('.servicio-card, .proyecto-detalle, .ci-item, .red-card, .porque-card, .equipo-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(30px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -176,7 +176,7 @@ function toggleProyecto(id) {
   const abierto = contenido.classList.contains('abierto');
   if (abierto) {
     contenido.classList.remove('abierto');
-    btn.innerHTML = '<i class="fas fa-images"></i> Ver proyecto';
+    btn.innerHTML = '<i class="fas fa-images"></i> Ver proceso completo';
   } else {
     contenido.classList.add('abierto');
     btn.innerHTML = '<i class="fas fa-times"></i> Cerrar proyecto';
@@ -185,18 +185,6 @@ function toggleProyecto(id) {
   }
 }
 
-// ===== LIGHTBOX =====
-function abrirFoto(src) {
-  const lb = document.getElementById('lightbox');
-  document.getElementById('lb-img').src = src;
-  lb.classList.add('active');
-}
-function cerrarFoto() {
-  document.getElementById('lightbox').classList.remove('active');
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') cerrarFoto();
-});
 // ===== LIGHTBOX CON FLECHAS =====
 let lbFotos = [];
 let lbIndice = 0;
@@ -265,4 +253,17 @@ window.addEventListener('scroll', () => {
 });
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ===== ANIMACIONES DE ENTRADA =====
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+  fadeObserver.observe(el);
 });
