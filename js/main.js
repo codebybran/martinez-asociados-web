@@ -232,3 +232,37 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') navLightbox(1);
   if (e.key === 'ArrowLeft') navLightbox(-1);
 });
+
+// ===== CONTADOR ANIMADO =====
+const contadores = document.querySelectorAll('.contador-num');
+const contadorObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-target'));
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          el.textContent = target;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(current);
+        }
+      }, 16);
+      contadorObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+contadores.forEach(c => contadorObserver.observe(c));
+
+// ===== BOTÓN VOLVER ARRIBA =====
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 400);
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});

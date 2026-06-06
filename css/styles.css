@@ -1322,3 +1322,107 @@ body {
   .pd-contenido { padding: 20px; }
   .pd-portada-overlay h3 { font-size: 26px; }
 }
+
+/* ===== MAPA ===== */
+.mapa-container {
+  margin-top: 48px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.mapa-header {
+  background: var(--amarillo);
+  color: var(--negro);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.mapa-header i { font-size: 16px; }
+
+/* ===== CONTADOR ===== */
+.contador {
+  padding: 80px 0;
+  background: var(--amarillo);
+}
+.contador-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.contador-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  text-align: center;
+}
+.contador-item:last-child { border-right: none; }
+.contador-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 72px;
+  color: var(--negro);
+  line-height: 1;
+  letter-spacing: 2px;
+}
+.contador-plus {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: var(--negro);
+  opacity: 0.6;
+  margin-top: -8px;
+}
+.contador-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--negro);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 8px;
+}
+
+/* ===== BOTÓN VOLVER ARRIBA ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 32px;
+  z-index: 9998;
+  width: 44px; height: 44px;
+  background: var(--negro);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  color: var(--blanco);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+.back-to-top:hover {
+  background: var(--amarillo);
+  color: var(--negro);
+  border-color: var(--amarillo);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+  .contador-grid { grid-template-columns: repeat(2, 1fr); }
+  .contador-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .back-to-top { bottom: 90px; right: 20px; }
+}
