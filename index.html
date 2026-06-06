@@ -235,32 +235,81 @@
     <div class="container">
       <div class="section-tag">Portafolio</div>
       <h2 class="section-title">Nuestros <span class="highlight">proyectos</span></h2>
-      <p class="section-desc">Aquí publicaremos el avance de cada proyecto, de inicio a fin.</p>
-      <div class="proyectos-grid">
-        <div class="proyecto-card proximamente">
-          <div class="pc-overlay">
-            <span class="pc-tag">Próximamente</span>
-            <h3>Proyecto 1</h3>
-            <p>El Cerrito, Valle del Cauca</p>
+      <p class="section-desc">Seguimiento completo de nuestras obras, de inicio a fin.</p>
+
+      <!-- PROYECTO 1 -->
+      <div class="proyecto-detalle">
+        <div class="pd-header">
+          <div class="pd-portada">
+            <img src="img/proyecto-bodega-palmira/foto1.jpg" alt="Bodega Palmira">
+            <div class="pd-portada-overlay">
+              <span class="pd-estado en-proceso">En proceso</span>
+              <h3>Bodega Comercial<br>Futuro Concesionario de Motos</h3>
+              <div class="pd-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Palmira, Valle del Cauca</span>
+                <span><i class="fas fa-ruler-combined"></i> 31m × 9m — 279 m²</span>
+                <span><i class="fas fa-hard-hat"></i> Obra civil estructural</span>
+                <span><i class="fas fa-images"></i> 42 fotos · 7 videos</span>
+              </div>
+            </div>
+          </div>
+          <div class="pd-info-side">
+            <p class="pd-desc">Construcción de bodega de gran formato en la ciudad de Palmira, Valle del Cauca, destinada a albergar un concesionario de motos. El proyecto contempla una estructura perimetral de concreto reforzado sin columnas centrales, garantizando un espacio interior despejado de 279 m². La cubierta incluye una losa de gran superficie fundida in situ. El registro fotográfico y de video documenta cada etapa del proceso constructivo, desde las excavaciones iniciales hasta la fundición de la losa.</p>
+            <div class="pd-stats">
+              <div class="pd-stat"><span class="ps-num">279</span><span class="ps-label">m² de área</span></div>
+              <div class="pd-stat"><span class="ps-num">42</span><span class="ps-label">fotografías</span></div>
+              <div class="pd-stat"><span class="ps-num">7</span><span class="ps-label">videos</span></div>
+            </div>
+            <button class="pd-toggle-btn" onclick="toggleProyecto('p1')">
+              <i class="fas fa-images"></i> Ver proceso completo
+            </button>
           </div>
         </div>
-        <div class="proyecto-card proximamente">
-          <div class="pc-overlay">
-            <span class="pc-tag">Próximamente</span>
-            <h3>Proyecto 2</h3>
-            <p>El Cerrito, Valle del Cauca</p>
+        <div class="pd-contenido" id="p1">
+          <div class="pd-section-title"><i class="fas fa-stream"></i> Proceso constructivo — registro cronológico</div>
+          <div class="pd-visor">
+            <div class="pd-visor-main" id="visor-p1">
+              <span class="pd-visor-type foto-tag" id="tipo-p1">FOTO</span>
+              <span class="pd-visor-counter" id="counter-p1">1 / 49</span>
+              <div class="pd-visor-nav">
+                <button class="pd-nav-btn" onclick="navVisor('p1',-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="pd-nav-btn" onclick="navVisor('p1',1)"><i class="fas fa-chevron-right"></i></button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="proyecto-card proximamente">
-          <div class="pc-overlay">
-            <span class="pc-tag">Próximamente</span>
-            <h3>Proyecto 3</h3>
-            <p>Valle del Cauca</p>
-          </div>
+          <div class="pd-thumbnails" id="thumbs-p1"></div>
         </div>
       </div>
+
+      <!-- PROYECTO 2 -->
+      <div class="proyecto-card proximamente" style="margin-top:24px">
+        <div class="pc-overlay">
+          <span class="pc-tag">Próximamente</span>
+          <h3>Proyecto 2</h3>
+          <p>El Cerrito, Valle del Cauca</p>
+        </div>
+      </div>
+
+      <!-- PROYECTO 3 -->
+      <div class="proyecto-card proximamente" style="margin-top:20px">
+        <div class="pc-overlay">
+          <span class="pc-tag">Próximamente</span>
+          <h3>Proyecto 3</h3>
+          <p>Valle del Cauca</p>
+        </div>
+      </div>
+
     </div>
   </section>
+
+  <!-- LIGHTBOX CON NAVEGACIÓN -->
+  <div class="lightbox" id="lightbox">
+    <span class="lb-close" onclick="cerrarFoto()">&times;</span>
+    <button class="lb-prev" onclick="navLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-next" onclick="navLightbox(1)"><i class="fas fa-chevron-right"></i></button>
+    <span class="lb-counter" id="lb-counter"></span>
+  </div>
 
   <!-- GALERÍA -->
   <section class="galeria" id="galeria">
